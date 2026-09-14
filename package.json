@@ -1,0 +1,45 @@
+{
+  "name": "dailylog-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "中科微光 · 工作日志平台：统一项目工作台 + 钉钉日报项目原文 + 平台日志智能汇总",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "dev": "DEV_MODE=1 tsx src/server.ts",
+    "migrate": "tsx scripts/migrate.ts",
+    "migrate-unified-project-catalog": "tsx scripts/migrate-unified-project-catalog.ts",
+    "verify-unified-project-catalog": "tsx scripts/verify-unified-project-catalog.ts",
+    "sync-dingtalk-organization": "tsx scripts/sync-dingtalk-organization.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "init-accounts": "tsx scripts/init-accounts.ts",
+    "smoke": "tsx scripts/smoke-test.ts",
+    "verify-external-log-access": "tsx scripts/verify-external-log-access.ts",
+    "verify-external-log-scope": "tsx scripts/verify-external-log-scope.ts",
+    "verify-daily-report-project-filter": "tsx scripts/verify-daily-report-project-filter.ts",
+    "verify-dynamic-project-catalog": "tsx scripts/verify-dynamic-project-catalog.ts",
+    "verify-rd-department-digest": "tsx scripts/verify-rd-department-digest.ts",
+    "verify-dws-connection": "tsx scripts/verify-dws-connection.ts",
+    "verify-dws-context-preview": "tsx scripts/verify-dws-context-preview.ts",
+    "verify-dws-pilot-routes": "tsx scripts/verify-dws-pilot-routes.ts",
+    "verify-daily-assistant-readiness": "tsx scripts/verify-daily-assistant-readiness.ts",
+    "render-rd-department-digest": "tsx scripts/render-rd-department-digest.ts",
+    "preview-rd-department-digest": "tsx scripts/send-rd-department-digest-preview.ts",
+    "bakeoff": "tsx evals/daily-agent/bakeoff.ts",
+    "legacy-baseline": "tsx evals/daily-agent/legacy-baseline.ts",
+    "assistant-v2-conformance": "tsx scripts/assistant-v2-conformance.ts",
+    "typecheck": "tsc --noEmit",
+    "harness-replay": "tsx evals/daily-agent/harness-replay.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "tsx": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "typescript": "^5.9.0"
+  }
+}

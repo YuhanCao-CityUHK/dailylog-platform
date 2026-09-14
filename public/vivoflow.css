@@ -1,0 +1,99 @@
+.project-content-tabs { display:flex; gap:24px; border-bottom:1px solid var(--border); margin-bottom:16px; }
+.project-content-tabs button { border:0; border-bottom:3px solid transparent; background:transparent; min-height:44px; padding:8px 4px; font-size:14px; color:var(--text-2); }
+.project-content-tabs button[aria-selected="true"] { color:var(--primary); border-color:var(--primary); font-weight:600; }
+.project-content-tabs button:hover { color:var(--primary); }
+.project-content-tabs button:focus-visible, .vivo-panel button:focus-visible, .vivo-panel input:focus-visible, .vivo-panel summary:focus-visible { outline:2px solid var(--primary); outline-offset:3px; }
+.vivo-panel[hidden], #unifiedProjectSection[hidden], .vivo-link-row[hidden] { display:none; }
+.vivo-panel { --vivo-meta:var(--text-2); background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px; }
+.vivo-toolbar { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.vivo-toolbar strong { font-size:16px; font-weight:600; }
+.vivo-toolbar p, .vivo-caption { color:var(--vivo-meta); font-size:12px; }
+.vivo-actions { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.vivo-actions button { min-height:40px; }
+.vivo-panel button:disabled { opacity:.55; cursor:wait; }
+.vivo-sources { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0; }
+.vivo-sources > span { padding:6px 10px; border-radius:6px; background:var(--ledger-wash); font-size:13px; font-weight:500; }
+.vivo-sources small { font-size:12px; color:var(--vivo-meta); margin-left:8px; font-weight:400; }
+.vivo-metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:24px 0 8px; }
+.vivo-metrics > div { display:flex; flex-direction:column; padding-left:16px; border-left:2px solid var(--border); }
+.vivo-metrics b { font-size:28px; line-height:1.3; font-weight:600; font-variant-numeric:tabular-nums; }
+.vivo-metrics span { font-size:12px; color:var(--vivo-meta); }
+.vivo-metrics .has-risk { border-color:var(--warning-ink); color:var(--warning-ink); }
+.vivo-caption { margin-bottom:24px; }
+.vivo-sync-status { display:flex; gap:8px; align-items:center; font-size:13px; color:var(--primary); padding:12px 0; }
+.vivo-sync-status .loading-ring { width:16px; height:16px; flex:0 0 16px; }
+.vivo-warning { color:var(--warning-ink); background:var(--warning-wash); padding:12px; border-radius:6px; margin:12px 0; font-size:13px; }
+.vivo-filters { display:flex; flex-wrap:wrap; gap:12px; align-items:center; padding-bottom:16px; }
+.vivo-search { display:block; flex:1 1 220px; }
+.vivo-search input { width:100%; border:1px solid var(--border); background:var(--bg); padding:10px 12px; min-height:40px; border-radius:6px; color:var(--text); }
+.vivo-filter-buttons { display:flex; flex-wrap:wrap; gap:4px; }
+.vivo-filter-buttons button { padding:8px 10px; min-height:40px; border:0; border-radius:6px; background:transparent; color:var(--text-2); }
+.vivo-filter-buttons button:hover { background:var(--bg); }
+.vivo-filter-buttons button[aria-pressed="true"] { color:var(--primary); background:var(--primary-bg); }
+.vivo-filter-count { font-size:12px; color:var(--vivo-meta); font-variant-numeric:tabular-nums; }
+.vivo-table-head, .vivo-task summary { display:grid; grid-template-columns:minmax(160px,2.3fr) minmax(64px,.7fr) minmax(104px,1fr) 90px 86px; gap:12px; align-items:center; }
+.vivo-table-head { background:var(--bg); color:var(--vivo-meta); padding:10px 12px; font-size:12px; }
+.vivo-task { border-bottom:1px solid var(--border); }
+.vivo-task summary { list-style:none; cursor:pointer; padding:16px 12px; min-height:64px; font-size:13px; }
+.vivo-task summary::-webkit-details-marker { display:none; }
+.vivo-task summary:hover { background:var(--bg); }
+.vivo-task-name { min-width:0; }
+.vivo-task-name strong { display:block; overflow-wrap:anywhere; font-weight:500; font-size:14px; }
+.vivo-task-name strong:before { content:'›'; display:inline-block; width:12px; color:var(--text-2); }
+.vivo-task[open] .vivo-task-name strong:before { content:'⌄'; }
+.vivo-task-name small { display:block; color:var(--vivo-meta); font-size:12px; padding-left:12px; margin-top:4px; }
+.vivo-task-status { display:flex; flex-wrap:wrap; gap:4px; }
+.vivo-badge { display:inline-block; font-size:12px; padding:2px 6px; border-radius:4px; color:var(--text-2); background:var(--bg); white-space:nowrap; }
+.vivo-badge.status-DONE { color:var(--primary); background:var(--primary-bg); }
+.vivo-badge.status-IN_PROGRESS { color:var(--ding-ink); background:var(--ding-wash); }
+.vivo-badge.overdue, .vivo-badge.risk { color:var(--warning-ink); background:var(--warning-wash); }
+.vivo-task-date, .vivo-task-updates { font-size:12px; font-variant-numeric:tabular-nums; color:var(--vivo-meta); }
+.vivo-task-body { padding:0 16px 16px 24px; }
+.vivo-task-meta { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; color:var(--vivo-meta); font-size:12px; margin-bottom:12px; }
+.vivo-progress { border-left:2px solid var(--primary-bg); padding:0 0 4px 12px; margin:12px 0; }
+.vivo-progress > div { display:flex; gap:12px; align-items:center; font-size:12px; }
+.vivo-progress b { font-weight:500; }
+.vivo-progress time, .vivo-progress small { color:var(--vivo-meta); font-size:12px; }
+.vivo-progress p { white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.7; margin:6px 0; }
+.vivo-no-progress { color:var(--vivo-meta); font-size:13px; padding:8px 0; }
+.vivo-empty { padding:40px 16px; text-align:center; }
+.vivo-empty strong { display:block; font-size:16px; font-weight:600; }
+.vivo-empty p { color:var(--text-2); margin:8px auto 20px; max-width:500px; }
+.vivo-empty .btn { margin:4px; }
+.vivo-more { display:block; margin:16px auto; }
+.vivo-link-intro { color:var(--text-2); margin:12px 0 16px; }
+dialog.vivo-link-modal { margin:auto; padding:24px; width:min(560px,calc(100% - 32px)); max-height:calc(100dvh - 48px); border:1px solid var(--border); color:var(--text); border-radius:10px; }
+dialog.vivo-link-modal::backdrop { background:rgba(15,23,42,.35); }
+dialog.vivo-link-modal[open] { display:flex; flex-direction:column; overflow:hidden; gap:12px; }
+.vivo-link-modal h3, .vivo-link-modal .vivo-link-intro, .vivo-link-modal .vivo-dialog-actions { margin:0; flex-shrink:0; }
+.vivo-link-modal .vivo-search { flex:0 0 auto; }
+.vivo-link-modal .vivo-link-list { flex:1 1 auto; min-height:0; margin:0; }
+.vivo-link-modal .vivo-link-error:empty { display:none; }
+.vivo-link-list { max-height:360px; overflow:auto; margin:12px 0; }
+.vivo-link-row { display:flex; gap:12px; align-items:center; padding:12px 8px; min-height:48px; border-bottom:1px solid var(--border); cursor:pointer; }
+.vivo-link-row:hover { background:var(--bg); }
+.vivo-link-row input { width:18px; height:18px; accent-color:var(--primary); }
+.vivo-link-row strong { display:block; font-size:14px; font-weight:500; }
+.vivo-link-row small { color:var(--text-2); font-size:12px; }
+.vivo-link-error { color:var(--warning-ink); font-size:13px; }
+.vivo-dialog-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:16px; }
+.vivo-dialog-actions button { min-height:40px; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+@media (max-width:760px) {
+  .vivo-panel { padding:12px; }
+  .vivo-table-head { display:none; }
+  .vivo-task summary { grid-template-columns:minmax(0,1fr) auto; gap:8px; padding:12px 4px; }
+  .vivo-task-name { grid-column:1 / -1; }
+  .vivo-task-status { grid-column:1 / -1; grid-row:3; }
+  .vivo-task-date:before { content:'截止 '; }
+  .vivo-task-updates { display:none; }
+  .vivo-task-body { padding-left:8px; padding-right:4px; }
+  .vivo-metrics { gap:8px; }
+  .vivo-metrics > div { padding-left:8px; }
+  .vivo-metrics b { font-size:24px; }
+  .vivo-filters { gap:8px; }
+  .vivo-search { flex-basis:100%; }
+  .vivo-empty { padding:28px 8px; }
+  .vivo-sources small { display:block; margin-left:0; }
+}
+@media (prefers-reduced-motion:reduce) { .vivo-panel .loading-ring { animation:none; } }

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F766E">
+  <title>中科微光 · 工作日志平台</title>
+  <link rel="stylesheet" href="/styles.css?v=20260907-assistant-1730">
+  <link rel="stylesheet" href="/vivoflow.css?v=20260908-r3">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="logo"><i></i><span class="logo-text-full">中科微光 · 工作日志平台</span><span class="logo-text-short" style="display:none">工作日志</span></span>
+      <nav class="nav" id="nav"></nav>
+      <span class="user-box">
+        <span id="dwsStatus" class="dws-status is-checking" hidden><i></i><span class="dws-label">DWS检查中</span></span>
+        <span class="u-name" id="uName"></span>
+        <span id="uRole" class="muted"></span>
+        <button class="btn-logout" id="btnLogout">退出</button>
+      </span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page" id="page-fill"></section>
+    <section class="page" id="page-assistant"></section>
+    <section class="page" id="page-mylogs"></section>
+    <section class="page" id="page-home"></section>
+    <section class="page" id="page-project"></section>
+    <section class="page" id="page-category"></section>
+    <section class="page" id="page-employee"></section>
+    <section class="page" id="page-dept"></section>
+    <section class="page" id="page-qa"></section>
+    <section class="page" id="page-admin"></section>
+  </main>
+
+  <div class="mask" id="mask"><div class="modal" id="modalBox"></div></div>
+  <div id="toast"></div>
+  <input type="file" id="fileInput" style="display:none">
+
+  <script src="/vivoflow.js?v=20260908-r5"></script>
+  <script src="/app.js?v=20260908-vivoflow"></script>
+</body>
+</html>

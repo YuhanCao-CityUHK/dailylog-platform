@@ -1,0 +1,23 @@
+# /etc/systemd/system/dailylog.service
+[Unit]
+Description=Dailylog Platform (dailylog.vivolightsales.com)
+After=network.target
+
+[Service]
+Type=simple
+User=dailylog
+Group=dailylog
+WorkingDirectory=/opt/dailylog/app
+ExecStart=/usr/bin/npm run start
+Restart=always
+RestartSec=3
+Environment=NODE_ENV=production
+# 资源与安全约束
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/opt/dailylog/app/data /opt/dailylog/dws-users /opt/dailylog/.dws /opt/dailylog/.local/share/dws-cli
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

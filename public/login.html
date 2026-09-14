@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F766E">
+  <title>登录 · 中科微光工作日志平台</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .login-card { width: 360px; max-width: 92vw; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 28px 26px; }
+    .login-logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 17px; margin-bottom: 4px; }
+    .login-logo i { width: 12px; height: 12px; background: var(--primary); border-radius: 3px; display: inline-block; }
+    .login-sub { color: var(--text-3); font-size: 12.5px; margin-bottom: 18px; }
+    .fld { margin-bottom: 12px; }
+    .fld input { width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; font-size: 14px; }
+    .fld input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(15,118,110,.12); }
+    .login-btn { width: 100%; padding: 9px 0; font-size: 14.5px; }
+    .dd-status { text-align: center; color: var(--text-2); font-size: 13px; padding: 14px 0; }
+    .err { color: #B91C1C; font-size: 12.5px; margin-bottom: 10px; display: none; }
+    .divider { display: flex; align-items: center; gap: 10px; color: var(--text-3); font-size: 12px; margin: 16px 0 12px; }
+    .divider::before, .divider::after { content: ""; flex: 1; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="login-logo"><i></i>中科微光 · 工作日志平台</div>
+    <div class="login-sub">内部同事请从钉钉工作台进入（自动免登）；外部工程师使用账号密码登录。</div>
+    <div class="dd-status" id="ddStatus" style="display:none">钉钉免登中…</div>
+    <div id="loginForm">
+      <div class="err" id="err"></div>
+      <div class="fld"><input id="loginName" placeholder="账号（如 pinghu01）" autocomplete="username"></div>
+      <div class="fld"><input id="password" type="password" placeholder="密码" autocomplete="current-password"></div>
+      <button class="btn btn-primary login-btn" id="btnLogin">登 录</button>
+      <div class="divider">或</div>
+      <button class="btn login-btn" id="btnDd">在钉钉内打开以免登</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var isDingTalk = /DingTalk/i.test(navigator.userAgent);
+      var err = document.getElementById("err");
+      function showErr(msg) { err.textContent = msg; err.style.display = "block"; }
+      function doLocalLogin() {
+        err.style.display = "none";
+        var body = {
+          loginName: document.getElementById("loginName").value.trim(),
+          password: document.getElementById("password").value
+        };
+        fetch("/api/auth/login", {
+          method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin",
+          body: JSON.stringify(body)
+        }).then(function (r) { return r.json(); }).then(function (d) {
+          if (d.ok) { location.href = "/"; } else { showErr(d.error || "登录失败"); }
+        }).catch(function () { showErr("网络异常，请重试"); });
+      }
+      document.getElementById("btnLogin").onclick = doLocalLogin;
+      document.getElementById("password").addEventListener("keydown", function (e) { if (e.key === "Enter") doLocalLogin(); });
+      document.getElementById("btnDd").onclick = function () {
+        showErr("请从钉钉工作台的「工作日志平台」应用进入，即可自动免登。");
+      };
+
+      if (isDingTalk) {
+        var st = document.getElementById("ddStatus");
+        st.style.display = "block";
+        fetch("/api/auth/config", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (cfg) {
+          if (!cfg.ok || !cfg.dingtalkEnabled || !cfg.corpId) { st.textContent = "钉钉免登未配置，请使用账号密码登录"; return; }
+          var s = document.createElement("script");
+          s.src = "https://g.alicdn.com/dingding/dingtalk-jsapi/3.0.25/dingtalk.open.js";
+          s.onload = function () {
+            /* global dd */
+            dd.ready(function () {
+              dd.runtime.permission.requestAuthCode({
+                corpId: cfg.corpId,
+                onSuccess: function (info) {
+                  fetch("/api/auth/dingtalk", {
+                    method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin",
+                    body: JSON.stringify({ code: info.code })
+                  }).then(function (r) { return r.json(); }).then(function (d) {
+                    if (d.ok) { location.href = "/"; }
+                    else { st.textContent = "免登失败：" + (d.error || "") + "，可使用账号密码登录"; }
+                  });
+                },
+                onFail: function (e) { st.textContent = "免登失败（" + JSON.stringify(e) + "），可使用账号密码登录"; }
+              });
+            });
+            dd.error(function (e) { st.textContent = "钉钉 JSAPI 初始化失败，可使用账号密码登录"; });
+          };
+          s.onerror = function () { st.textContent = "钉钉组件加载失败，可使用账号密码登录"; };
+          document.head.appendChild(s);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

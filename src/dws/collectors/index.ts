@@ -1,0 +1,9 @@
+export { chatCollector } from "./chat-collector";
+export { documentCollector } from "./document-collector";
+export { wikiCollector } from "./wiki-collector";
+export { calendarCollector } from "./calendar-collector";
+export { minutesCollector } from "./minutes-collector";
+export { todoCollector } from "./todo-collector";
+export { dingtalkReportCollector } from "./dingtalk-report-collector";
+export { attendanceApprovalCollector } from "./attendance-approval-collector";
+export { workInteractionCollector } from "./work-interaction-collector";

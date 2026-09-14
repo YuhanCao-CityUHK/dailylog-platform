@@ -1,0 +1,58 @@
+{
+  "workDate": "2026-08-25",
+  "historyWorkDates": ["2026-08-19", "2026-08-20", "2026-08-21", "2026-08-24", "2026-08-25"],
+  "completedHistory": [
+    {
+      "reportId": "report-19",
+      "report_name": "示例管理员的总经办日志",
+      "createTime": "2026-08-19T18:00:00+08:00",
+      "report_content": [{ "key": "工作模块①", "value": "Z10604智能体工程：已完成国内销售需求验收并修正信息同步逻辑，事项结果为当日版本验证通过。" }]
+    },
+    {
+      "reportId": "report-20",
+      "report_name": "示例管理员的总经办日志",
+      "createTime": "2026-08-20T18:00:00+08:00",
+      "report_content": [{ "key": "工作模块①", "value": "日报助手架构：已完成接口文档整理和权限设置，事项结果为评审通过。" }]
+    },
+    {
+      "reportId": "report-21",
+      "report_name": "工作日报",
+      "createTime": "2026-08-21T18:00:00+08:00",
+      "report_content": [{ "key": "工作模块①", "value": "考勤模块：已完成异常记录核对和历史批次清理，事项结果为问题关闭。" }]
+    },
+    {
+      "reportId": "report-22",
+      "report_name": "历史日志",
+      "createTime": "2026-08-22T18:00:00+08:00",
+      "report_content": [{ "key": "工作模块①", "value": "客户支持：已完成现场问题处理，事项结果为客户确认恢复。" }]
+    },
+    {
+      "reportId": "report-24-completed",
+      "report_name": "示例管理员的总经办日志",
+      "createTime": "2026-08-24T18:00:00+08:00",
+      "report_content": [{ "key": "工作模块①", "value": "工作日志平台：已完成主管首页接口联调，事项结果为历史版本验收通过。" }]
+    }
+  ],
+  "previousPlanReport": {
+    "reportId": "report-24-plan",
+    "report_name": "示例管理员的总经办日志",
+    "createTime": "2026-08-24T18:05:00+08:00",
+    "report_content": [
+      { "key": "工作模块①", "value": "工作日志平台：已完成旧版候选事项渲染，事项结果为历史页面可用。这是一段不应出现在今日候选卡片中的历史完成正文。" },
+      { "key": "明日计划", "value": "推进日报助手项目匹配和提交链路验证" }
+    ]
+  },
+  "todayDocument": {
+    "sourceType": "document",
+    "externalId": "doc-today",
+    "title": "日报助手项目匹配和提交链路验证",
+    "summary": "已定位项目匹配失败原因并完成提交链路模拟验证",
+    "occurredAt": "2026-08-25T10:00:00+08:00",
+    "actorUserIds": ["employee-1"],
+    "actorNames": ["测试员工"],
+    "participantNames": [],
+    "privacyScope": "normal",
+    "projectSignals": ["工作日志平台", "日报助手"],
+    "evidenceStrength": "strong"
+  }
+}
